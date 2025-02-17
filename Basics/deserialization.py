@@ -5,8 +5,12 @@ class Person(BaseModel):
     last_name: str
     age: int
 
+# Using class assingment
 p1 = Person(first_name="Ramazan", last_name="Samat", age=28)
 print(p1)
+
+
+# Using python dictionary
 data ={
     "first_name": "Ramz",
     "last_name": "Samat",
@@ -18,7 +22,7 @@ p2 = Person(**data)
 
 print(p2)
 
-# Deserialize json
+# Deserialize using json
 
 data_json = '''
 {

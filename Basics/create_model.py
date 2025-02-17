@@ -13,12 +13,13 @@ model = person1.model_fields
 
 print(repr(model))
 
+# All fields are currently required and will fail if we miss reuired field
 try:
     Person(last_name="Gaisina")
 except ValidationError as ex:
     print(ex)
 
-class Person(BaseModel):
+class Person2(BaseModel):
     first_name: str
     last_name: str
     age: int
@@ -28,9 +29,15 @@ class Person(BaseModel):
         return f"{self.first_name} {self.last_name}"
 
 
-person2 = Person(first_name="Linara", last_name= "Samat", age = 28)
+person2 = Person2(first_name="Linara", last_name= "Samat", age = 28)
 print(person2.display_name)
 
 person2.age = 27
 print(person2.display_name)
 
+# Can't assign wrong data type after it was created
+person2.age = "Twenty seven"
+person2
+
+# But we can assign wrong type at creation
+person3 = Person2(first_name="Kesda", last_name= "Sark", age = "twenty two")
