@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ValidationError
 
 class Mail(BaseModel):
-    email:str
+    email: str
 
 json_data = '''
 {
@@ -12,8 +12,19 @@ json_data = '''
 }
 '''
 
-try: 
-    Mail.model_validate_json(json_data)
-except ValidationError as ex:
-    print(ex)
+# try:
+#     Mail.model_validate_json(json_data)
+# except ValidationError as ex:
+#     print(ex)
 
+
+new_data = {
+    "email": {
+        "personal": "inewton@principia.com",
+        "work": "isaac.newton@themint.com"
+    }
+}
+
+mail1 = Mail(email=str(new_data['email']))
+
+print(mail1)

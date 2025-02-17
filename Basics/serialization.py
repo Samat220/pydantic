@@ -26,3 +26,6 @@ print(type(newton_dump))
 # Inclusion and exclusion
 dump2 = newton.model_dump(include=["last_name"])
 print(dump2)
+
+dump3 = newton.model_dump(exclude=['age'])
+print(dump3)
